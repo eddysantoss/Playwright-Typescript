@@ -38,9 +38,5 @@ master
         await this.cartLink.click();
         await this.removeProductFromCart(productName);
         await expect(this.cartBadge).toBeHidden();
- feat/migrate-checkout-to-typescript
-
-
- master
     }
 }
