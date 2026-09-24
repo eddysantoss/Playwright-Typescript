@@ -22,7 +22,7 @@ export class ProductsPage {
 
     async removeProductFromCart(productName: string): Promise<void> {
         await this.page.click(`button[data-test="remove-${productName}"]`);
-        await expect(this.cartBadge).toHaveCount(0);
+        await expect(this.cartBadge).toBeHidden();
     }
 
     async goToCart(): Promise<void> {
@@ -33,6 +33,6 @@ export class ProductsPage {
         await this.page.click(`button[data-test="add-to-cart-${productName}"]`);
         await this.cartLink.click();
         await this.removeProductFromCart(productName);
-        await expect(this.cartBadge).toHaveCount(0);
+        await expect(this.cartBadge).toBeHidden();
     }
 }
