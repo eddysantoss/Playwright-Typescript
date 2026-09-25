@@ -1,8 +1,7 @@
-const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../../pages/login');
-const { ProductsPage } = require('../../pages/products');
-const { LogoutPage } = require('../../pages/logout');
-const { CheckoutPage } = require('../../pages/checkout');
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/login';
+import { ProductsPage } from '../../pages/products';
+import { CheckoutPage } from '../../pages/checkout';
 
 test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);

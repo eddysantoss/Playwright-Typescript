@@ -9,7 +9,6 @@ export class ProductsPage {
         this.page = page;
         this.cartBadge = page.locator('.shopping_cart_badge');
         this.cartLink = page.locator('[data-test="shopping-cart-link"]');
-
     }
 
     async gotoProductsPage(): Promise<void> {
@@ -35,6 +34,5 @@ export class ProductsPage {
         await this.cartLink.click();
         await this.removeProductFromCart(productName);
         await expect(this.cartBadge).toBeHidden();
-
     }
 }
