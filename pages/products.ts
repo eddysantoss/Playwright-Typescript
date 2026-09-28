@@ -12,7 +12,7 @@ export class ProductsPage {
     }
 
     async gotoProductsPage(): Promise<void> {
-        await this.page.goto('https://www.saucedemo.com/inventory.html');
+        await this.page.goto('/inventory.html');
     }
 
     async addProductToCart(productName: string): Promise<void> {

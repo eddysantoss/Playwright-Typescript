@@ -3,27 +3,31 @@
 Projeto de automação de testes end-to-end usando [Playwright](https://playwright.dev/).
 
 ## Pré-requisitos
-- Node.js 18+ instalado
+- Node.js 18 ou superior instalado
 - Git instalado
 
 ## Instalação
 ```bash
 npm install
+npx playwright install chromium
 ```
 
 ## Estrutura do Projeto
 ```
 ├── pages/           # Page Objects (POM)
-│   ├── login.js
-│   ├── products.js
-│   └── checkout.js
+│   ├── login.ts
+│   ├── products.ts
+│   ├── checkout.ts
+│   └── logout.ts
 ├── tests/
-│   └── demo/        # Testes automatizados
-│       ├── login.spec.js
-│       ├── products.spec.js
-│       ├── checkout.spec.js
-│       └── logout.spec.js
+│   ├── example.spec.ts
+│   └── demo/        # Testes automatizados do Sauce Demo
+│       ├── login.spec.ts
+│       ├── products.spec.ts
+│       ├── checkout.spec.ts
+│       └── logout.spec.ts
 ├── playwright.config.js
+├── tsconfig.json
 ├── package.json
 └── README.md
 ```
@@ -32,23 +36,35 @@ npm install
 
 Executar todos os testes:
 ```bash
-npx playwright test
+npm test
 ```
 
 Executar um teste específico:
 ```bash
-npx playwright test tests/demo/login.spec.js --project=chromium
+npx playwright test tests/demo/login.spec.ts --project=chromium
 ```
 
 Executar com navegador visível (headed):
 ```bash
-npx playwright test demo --headed
+npm run test:headed
+```
+
+Abrir a interface interativa do Playwright:
+```bash
+npm run test:ui
+```
+
+Validar os tipos TypeScript:
+```bash
+npm run typecheck
 ```
 
 ## Boas práticas adotadas
 - Uso de Page Object Model (POM) para separar ações e seletores
 - Locators centralizados no construtor dos page objects
 - Asserções principais feitas nos próprios testes
+- Fixture `page` fornecida pelo Playwright e isolamento entre testes
+- `baseURL` centralizada para navegação nos Page Objects
 - Fluxos mínimos e claros em cada teste
 - Testes independentes e de fácil manutenção
 
@@ -59,7 +75,7 @@ npx playwright test demo --headed
   ```
 - Para abrir o relatório HTML dos testes:
   ```bash
-  npx playwright show-report
+  npm run test:report
   ```
 
 ## Referências

@@ -8,5 +8,5 @@ test('should login with valid credentials (typescript)', async ({ page }: { page
   await loginPage.login('standard_user', 'secret_sauce');
   await loginPage.expectHomePageIsVisible();
 
-  expect(page.url()).toContain('inventory');
+  await expect(page).toHaveURL(/inventory/);
 });
